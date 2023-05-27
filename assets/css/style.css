@@ -9,16 +9,28 @@
     font-family: 'Lexend', sans-serif;
 }
 
+body {
+    background-color: #a5c4d4;
+}
+
 .customnav {
     background-color: #708E9D;
 }
 
 .customhtext {
     font-size: 2em;
-    color: #E4E4E4;
+    color: #fff;
     pointer-events: none;
 }
 
-/* .customhtext:hover {
-    color: #C0C0C0; 
-} */
+.input-group-text {
+    color: #3f3f3f;
+}
+
+.customcontainer {
+    margin-top: 30px; 
+}
+
+h2 {
+    color: #354A54;
+}
