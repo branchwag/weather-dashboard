@@ -6,6 +6,8 @@ function getApi() {
   //       displayScoreSubmitMessage("error", "Box cannot be blank");
   //   }
 
+  //also add in way to handle invalid location
+
     var cityName = document.querySelector("#inputbox").value;
     var APIKey = "60ebe634619c5700bf67dc2646a55408";
     var requestUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + cityName + '&limit=5&appid=' + APIKey;
@@ -16,7 +18,7 @@ function getApi() {
       })
       .then(function (data) {
         // Use the console to examine the response
-        console.log(data);
+        // console.log(data);
         // console.log(cityName);
   
           latitude = data[0].lat;
@@ -67,7 +69,7 @@ function getWeatherDataByLatandLong(latitude, longitude) {
         // console.log(data.list[0].dt_txt);
         var currentDateFromAPI = data.list[0].dt_txt;
         var currentDateElement = document.createElement("p");
-        currentDateElement.innerText = "Date: " + currentDateFromAPI;
+        currentDateElement.innerText = "Date: " + currentDateFromAPI.slice(0, 11); //chops off utc timestamp at end to make this just the date
         document.getElementById("currentcond").appendChild(currentDateElement);
 
         //Gets weather description
@@ -79,7 +81,7 @@ function getWeatherDataByLatandLong(latitude, longitude) {
         currentWeatherIcon.src = iconUrl;
         document.getElementById("currentcond").appendChild(currentWeatherIcon);
 
-
+        //in text in case icon does not load
         var currentConditionFromAPI = data.list[0].weather[0].description;
         var currentConditionElement = document.createElement("p");
         currentConditionElement.innerText = currentConditionFromAPI.toUpperCase();
@@ -102,10 +104,23 @@ function getWeatherDataByLatandLong(latitude, longitude) {
         document.getElementById("currentcond").appendChild(temperatureElement);
 
         //Humidity
+        //console.log(data.list[0].main.humidity);
+        var humidityFromApi = data.list[0].main.humidity;
+        var humidityElement = document.createElement("p");
+        //in percent
+        humidityElement.innerText = "Humidity: " + humidityFromApi + "%";
+        document.getElementById("currentcond").appendChild(humidityElement);
 
         //Wind Speed
+        // console.log(data.list[0]);
+        //console.log(data.list[0].wind.speed);
+        // console.log(data.list)
+        var windSpeedFromAPI = data.list[0].wind.speed;
+        var windSpeedElement = document.createElement("p");
+        windSpeedElement.innerText = "Wind Speed: " + windSpeedFromAPI + " meters per second";
+        document.getElementById("currentcond").appendChild(windSpeedElement);
 
-
+        //now to fill in 5 day forecast
         
       }
     )
