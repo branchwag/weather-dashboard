@@ -8,8 +8,6 @@ function getApi() {
 
   //also add in way to handle invalid location
 
-  
-
     var cityName = document.querySelector("#inputbox").value;
     var APIKey = "60ebe634619c5700bf67dc2646a55408";
     //please see code further below where I am taking the city name and getting the lat/long before running a new API request with lat and long
@@ -35,15 +33,34 @@ function getApi() {
     createPastSearchButton();
   }
 
+function runOldSearch(event) {
+  // console.log(event.target.innerText);
+  //put the cityName into the input box and run api function
+  // document.querySelector("#inputbox").value = event.target.innerText;
+  //while the above does work, we need to do this with localstorage. Get localstorage for what was clicked on.
+  document.querySelector("#inputbox").value = localStorage.getItem(event.target.innerText)
+  getApi();
+} 
+
 function createPastSearchButton() {
   var cityName = document.querySelector("#inputbox").value;
   var pastSearchButton = document.createElement("button");
+
+  //set this cityName value into local storage
+  localStorage.setItem(document.querySelector("#inputbox").value, document.querySelector("#inputbox").value);
+
   pastSearchButton.id = 'pastSearchButton' + cityName; 
   pastSearchButton.innerText = cityName;
-  document.querySelector("#prevsearch").appendChild(pastSearchButton);
-  document.querySelector("#pastSearchButton" + cityName).classList.add("btn" , "btn-secondary" , "btn-lg", "custombtn", "pastSearchButtonC");
-  //NEED TO MAKE PAST SEARCH BUTTON WORK
-  // document.getElementById("pastSearchButton" + cityName).addEventListener('click', getApi);
+    //makes the button pretty
+  pastSearchButton.classList.add("btn" , "btn-secondary" , "btn-lg", "custombtn", "pastSearchButtonC");
+  document.querySelector("#prevsearch").appendChild(pastSearchButton);    
+
+  //adds a listener to the past search buttons
+  var pastSearchButtons = document.getElementsByClassName("pastSearchButtonC");
+  for (var i = 0; i < pastSearchButtons.length; i++) {
+    pastSearchButtons[i].addEventListener('click', runOldSearch);
+  }
+
 }
 
 function getWeatherDataByLatandLong(latitude, longitude) {
@@ -57,7 +74,7 @@ function getWeatherDataByLatandLong(latitude, longitude) {
       .then(function (data) {
         // Use the console to examine the response
         // console.log(data);
-        console.log(data.list)
+        // console.log(data.list)
 
         //clears current day boxes if info from previous search is there
         document.getElementById("day0").innerHTML = "";
