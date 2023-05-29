@@ -14,7 +14,7 @@ Type in a city into the search bar on the left-hand side! The page should then p
 
 To add a screenshot, create an assets/images folder in your repository and upload your screenshot to it. Then, using the relative file path, add it to your README using the following syntax:
 
-![alt text](assets/images/screenshot.png)
+![screenshot of weather app](assets/weatherapp.png)
 
 ## Credits
 
@@ -26,10 +26,14 @@ https://getbootstrap.com/docs/5.3/getting-started/introduction/
 This app uses the OpenWeather API to populate data:
 https://openweathermap.org/forecast5
 
-I would also like to credit a few articles that were helpful in creating this app, below: 
-https://bobbyhadz.com/blog/javascript-get-element-by-id-contains
-https://www.freecodecamp.org/news/javascript-check-if-undefined-how-to-test-for-undefined-in-js/
-https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys
+I would also like to credit a few articles that were helpful in creating this app, below:  
+
+https://bobbyhadz.com/blog/javascript-get-element-by-id-contains  
+
+https://www.freecodecamp.org/news/javascript-check-if-undefined-how-to-test-for-undefined-in-js/  
+
+https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys  
+
 https://codetogo.io/how-to-add-multiple-classes-to-element-in-javascript/
 
 ## License
