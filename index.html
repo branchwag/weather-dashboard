@@ -13,26 +13,27 @@
         <div class="container-fluid customnav">
           <span class="navbar-brand mb-0 h1 customnav customhtext">☁️How's the weather?☁️</span>
         </div>
-      </nav>
-      <div class="input-group input-group-lg custominput">
-        <span class="input-group-text" id="inputGroup-sizing-lg">City</span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
-        <button type="button" class="btn btn-secondary btn-lg custombtn">Submit</button>
-      </div>
+    </nav>
 
-      <div class="container-fluid customcontainer">
-        <div class="card">
-            <div class="card-body">
-              <h2>Current Conditions</h2>
-              <p id="#currentconditions"></p>
-            </div>
-          </div>
-      </div>
-
-      <div class="container text-center customcontainer">
+      <div class="container-fluid text-center customcontainer">
         <div class="row align-items-start">
           <div class="col col-md-4">
+            <div class="input-group input-group-lg custominput">
+              <span class="input-group-text" id="inputGroup-sizing-lg">City</span>
+              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+              <button type="button" class="btn btn-secondary btn-lg custombtn">Submit</button>
+            </div>
             <h2 class="prevsearch">Previous searches</h2>
+          </div>
+          <div class="col">
+            <div class="container-fluid customcontainer">
+              <div class="card">
+                  <div class="card-body">
+                    <h2>Current Conditions</h2>
+                    <p id="#currentconditions"></p>
+                  </div>
+                </div>
+            </div>
           </div>
           <div class="col">
             <h2>Day 1</h2>
@@ -51,7 +52,6 @@
           </div>
         </div>
       </div>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 <script src="./assets/scripts/script.js"></script>
 </body>
