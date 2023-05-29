@@ -46,12 +46,17 @@ h2 {
     color: #6c757d; */
 }
 
+#prevsearch {
+    margin-top: 10px;
+}
+
 /* #pastSearchButton:hover {
     color: #fff;
 } */
 
 p {
     font-size: 1.5em;
+    color: #354A54;
 }
 
 /* #currentcond {

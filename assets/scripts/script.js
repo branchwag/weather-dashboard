@@ -22,8 +22,8 @@ function getApi() {
           latitude = data[0].lat;
           longitude = data[0].lon;
 
-          console.log(latitude);
-          console.log(longitude);
+          // console.log(latitude);
+          // console.log(longitude);
           getWeatherDataByLatandLong(latitude, longitude);
       }
     )
@@ -37,8 +37,8 @@ function createPastSearchButton() {
   pastSearchButton.innerText = cityName;
   document.querySelector("#prevsearch").appendChild(pastSearchButton);
   document.querySelector("#pastSearchButton" + cityName).classList.add("btn" , "btn-secondary" , "btn-lg", "custombtn", "pastSearchButtonC");
-
-  document.getElementById("pastSearchButton" + cityName).addEventListener('click', getApi);
+  //NEED TO MAKE PAST SEARCH BUTTON WORK
+  // document.getElementById("pastSearchButton" + cityName).addEventListener('click', getApi);
 }
 
 function getWeatherDataByLatandLong(latitude, longitude) {
@@ -51,31 +51,59 @@ function getWeatherDataByLatandLong(latitude, longitude) {
       })
       .then(function (data) {
         // Use the console to examine the response
-        console.log(data);
+        // console.log(data);
 
         //clears current condition box in case info from previous search is there
         document.getElementById("currentcond").innerHTML = "";
 
         //Gets City Name
-        console.log(data.city.name);
+        // console.log(data.city.name);
         var currentCityFromAPI = data.city.name;
         var currentCityElement = document.createElement("p");
         currentCityElement.innerText = "City: " + currentCityFromAPI;
         document.getElementById("currentcond").appendChild(currentCityElement);
 
         //Gets Date
-        console.log(data.list[0].dt_txt);
+        // console.log(data.list[0].dt_txt);
         var currentDateFromAPI = data.list[0].dt_txt;
         var currentDateElement = document.createElement("p");
         currentDateElement.innerText = "Date: " + currentDateFromAPI;
         document.getElementById("currentcond").appendChild(currentDateElement);
 
         //Gets weather description
-        console.log(data.list[0].weather[0].description);
+        //see https://openweathermap.org/weather-conditions
+        // console.log(data.list[0].weather[0].description);
+        var iconNum = data.list[0].weather[0].icon
+        var iconUrl = 'https://openweathermap.org/img/wn/' + iconNum + "@2x.png";
+        var currentWeatherIcon = document.createElement("img");
+        currentWeatherIcon.src = iconUrl;
+        document.getElementById("currentcond").appendChild(currentWeatherIcon);
+
+
         var currentConditionFromAPI = data.list[0].weather[0].description;
         var currentConditionElement = document.createElement("p");
-        currentConditionElement.innerText = currentConditionFromAPI;
+        currentConditionElement.innerText = currentConditionFromAPI.toUpperCase();
         document.getElementById("currentcond").appendChild(currentConditionElement);
+
+        //Temperature
+        var TempInKelvinFromAPI = data.list[0].main.temp;
+        // console.log(typeof(TempInKelvinFromAPI)); confirms this is returned as number
+        //CONVERT TO FAHRENHEIT
+        var TempinFahren = (TempInKelvinFromAPI - 273.15) * 9/5 + 32; // thank you google for the conversion formula!
+        //console.log(TempinFahren);
+        var cleanTempinFahren = Math.round(TempinFahren); // rounding result so it is cleaner to display
+        //also putting in Celsius 
+        var TempinCel = TempInKelvinFromAPI - 273.15;
+        var cleanTempinCel = Math.round(TempinCel);
+        // console.log(cleanTempinCel);
+        //console.log("Temp: " + cleanTempinFahren + "°F / " + cleanTempinCel + "°C");
+        var temperatureElement = document.createElement("p");
+        temperatureElement.innerText = "Temp: " + cleanTempinFahren + "°F / " + cleanTempinCel + "°C";
+        document.getElementById("currentcond").appendChild(temperatureElement);
+
+        //Humidity
+
+        //Wind Speed
 
 
         
