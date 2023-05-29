@@ -12,8 +12,6 @@ No install required! Simply access the page here: https://branchwag.github.io/we
 
 Type in a city into the search bar on the left-hand side! The page should then populate with the weather stats, screenshot below!
 
-To add a screenshot, create an assets/images folder in your repository and upload your screenshot to it. Then, using the relative file path, add it to your README using the following syntax:
-
 ![screenshot of weather app](assets/weatherapp.png)
 
 ## Credits
