@@ -5,7 +5,7 @@ function getApi() {
     var cityName = document.querySelector("#inputbox").value;
     var APIKey = "60ebe634619c5700bf67dc2646a55408";
     //please see code further below where I am taking the city name and getting the lat/long before running a new API request with lat and long
-    var requestUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + cityName + '&limit=5&appid=' + APIKey;
+    var requestUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=' + cityName + '&limit=5&appid=' + APIKey;
   
     fetch(requestUrl)
       .then(function (response) {
@@ -85,7 +85,7 @@ function getWeatherDataByLatandLong(latitude, longitude) {
 
 
         //Now to fill in 5 day forecast
-        //console.log(data.list);
+        // console.log(data.list);
 
         //According to the weather api documentation, it pull entries every 3 hours which is 10800 added to the UNIX time (dt)
         //since 24 hrs divided by 3 is 8...so every 8th item is what we need actually
@@ -93,10 +93,14 @@ function getWeatherDataByLatandLong(latitude, longitude) {
 
         var numberOfDaysToForeCast = 5;
         var objectLocationCounter = 0; //used to grab data every 8th position
+
   
         //var startingDayNumber = 1;
         //made a div for each day
         for (var i = 0; i < (numberOfDaysToForeCast + 1); i++) {
+        if (+objectLocationCounter === 40) {
+          objectLocationCounter = 39;
+        }
 
         //GETTING DATA
         //Windspeed
@@ -112,8 +116,10 @@ function getWeatherDataByLatandLong(latitude, longitude) {
         document.getElementById("day" + i).appendChild(currentCityElement);
 
         //Gets Date
-        // console.log(data.list[0].dt_txt);
         var currentDateFromAPI = data.list[objectLocationCounter].dt_txt;
+        // if (+objectLocationCounter > 39) {
+        //   (currentCityFromAPI.slice(0, -10));
+        // }
         var currentDateElement = document.createElement("p");
         currentDateElement.innerText = "Date: " + currentDateFromAPI.slice(0, 11); //chops off utc timestamp at end to make this just the date
         document.getElementById("day" + i).appendChild(currentDateElement);
@@ -166,10 +172,9 @@ function getWeatherDataByLatandLong(latitude, longitude) {
         windSpeedElement.innerText = "Wind Speed: " + windSpeedFromAPI + " meters per second";
         document.getElementById("day" + i).appendChild(windSpeedElement);
 
-
-
-        objectLocationCounter = objectLocationCounter + 7;
-          
+        objectLocationCounter = objectLocationCounter + 7; //needed to change to increment by 7 bc 8 would get out of bounds
+        // console.log(objectLocationCounter);
+        // console.log(i);
         }
 
         
