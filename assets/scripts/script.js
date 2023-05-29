@@ -120,8 +120,41 @@ function getWeatherDataByLatandLong(latitude, longitude) {
         windSpeedElement.innerText = "Wind Speed: " + windSpeedFromAPI + " meters per second";
         document.getElementById("currentcond").appendChild(windSpeedElement);
 
-        //now to fill in 5 day forecast
+        //Now to fill in 5 day forecast
+        //console.log(data.list);
+
+        //according to the weather api documentation, it pull entries every 3 hours which is 10800 added to the UNIX time (dt)
+        //so, to truly get the next day, we need in our loop to add a number and then pull the item where dt === the result that truly makes it the next day? 
+        //Orrrr since 24 hrs divided by 3 is 8...so every 8th item is what we need actually
+        //
+
+        var numberOfDaysToForeCast = 5;
+        //var startingDayNumber = 1;
+        //made a div for each day
+        for (var i = 1; i < (numberOfDaysToForeCast + 1); i++) {
+
+        //GETTING DATA
+
+        // var windSpeedFromAPI = data.list[i].wind.speed;
+        // var windSpeedElement = document.createElement("p");
+        //set id to plus i like answers
+        // windSpeedElement.innerText = "Wind Speed: " + windSpeedFromAPI + " meters per second";
+
+          //PLACING ELEMENTS
+          //document.getElementById("day" + i).innerText = "Test" + i;
+          // document.getElementById("day" + i).appendChild(currentCityElement + i);
+          // document.getElementById("day" + i).appendChild(currentDateElement + i);
+          // document.getElementById("day" + i).appendChild(currentWeatherIcon + i);
+          // document.getElementById("day" + i).appendChild(currentConditionElement + i);
+          // document.getElementById("day" + i).appendChild(temperatureElement + i);
+          // document.getElementById("day" + i).appendChild(humidityElement + i);
+          // document.getElementById("day" + i).appendChild(windSpeedElement + i);
+
+          
+        }
+
         
+
       }
     )
 }
