@@ -6,7 +6,7 @@ This project is a weather app that displays the weather in a given location when
 
 ## Installation
 
-No install required! Simply access the page here:
+No install required! Simply access the page here: https://branchwag.github.io/weather-dashboard/
 
 ## Usage
 
