@@ -14,8 +14,13 @@ function getApi() {
       .then(function (data) {
         // Use the console to examine the response
         // console.log(data);
+        // console.log(typeof(data));
+        //making sure that inputs are valid
+        if (data.length === 0) {
+          return alert('Please check your search input');
+        }
         // console.log(cityName);
-  
+
           latitude = data[0].lat;
           longitude = data[0].lon;
 
