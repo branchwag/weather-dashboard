@@ -1,11 +1,5 @@
 function getApi() {
 
-  // var initials = document.querySelector("#initialinput").value;
-    
-  //   if (initials === "") {
-  //       displayScoreSubmitMessage("error", "Box cannot be blank");
-  //   }
-
   //also add in way to handle invalid location
 
     var cityName = document.querySelector("#inputbox").value;
@@ -180,4 +174,16 @@ function getWeatherDataByLatandLong(latitude, longitude) {
 }
 
 
-document.getElementById("submitbutton").addEventListener('click', getApi);
+document.getElementById("submitbutton").addEventListener('click', checkInput);
+
+function checkInput() {
+var inputCheck = document.querySelector("#inputbox").value;
+    
+if (inputCheck === "") {
+    alert("Box cannot be blank");
+}
+else {
+  getApi();
+}
+
+}
