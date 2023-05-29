@@ -7,6 +7,8 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Lexend', sans-serif;
+    font-size: 16px;
+    /* border: 1px solid red; */
 }
 
 body {
@@ -34,3 +36,29 @@ body {
 h2 {
     color: #354A54;
 }
+
+.pastSearchButtonC {
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    /* border: none;
+    color: #6c757d; */
+}
+
+#prevsearch {
+    margin-top: 10px;
+}
+
+/* #pastSearchButton:hover {
+    color: #fff;
+} */
+
+p {
+    font-size: 1.5em;
+    color: #354A54;
+}
+
+/* #currentcond {
+    margin-bottom: 50px;
+} */
