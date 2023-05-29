@@ -5,7 +5,7 @@ function getApi() {
     var cityName = document.querySelector("#inputbox").value;
     var APIKey = "60ebe634619c5700bf67dc2646a55408";
     //please see code further below where I am taking the city name and getting the lat/long before running a new API request with lat and long
-    var requestUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + cityName + '&limit=5&appid=' + APIKey;
+    var requestUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=' + cityName + '&limit=5&appid=' + APIKey;
   
     fetch(requestUrl)
       .then(function (response) {
@@ -168,7 +168,7 @@ function getWeatherDataByLatandLong(latitude, longitude) {
 
 
 
-        objectLocationCounter = objectLocationCounter + 7;
+        objectLocationCounter = objectLocationCounter + 7; //had to change to 7 as 8 was getting out of bounds
           
         }
 
