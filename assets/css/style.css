@@ -62,3 +62,18 @@ p {
 /* #currentcond {
     margin-bottom: 50px;
 } */
+
+.customborder {
+    border: 5px dashed #6c757d;
+    padding: 10px;
+    /* border-radius: 25px; */
+}
+
+/* .col-3 {
+    height: 75%;
+} */
+
+.custom5daycontainer {
+    margin: auto;
+    margin-bottom: 10px;
+}
