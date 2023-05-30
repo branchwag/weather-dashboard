@@ -172,9 +172,16 @@ function getWeatherDataByLatandLong(latitude, longitude) {
         windSpeedElement.innerText = "Wind Speed: " + windSpeedFromAPI + " meters per second";
         document.getElementById("day" + i).appendChild(windSpeedElement);
 
+<<<<<<< HEAD
         objectLocationCounter = objectLocationCounter + 7; //needed to change to increment by 7 bc 8 would get out of bounds
         // console.log(objectLocationCounter);
         // console.log(i);
+=======
+
+
+        objectLocationCounter = objectLocationCounter + 7; //had to change to 7 as 8 was getting out of bounds
+          
+>>>>>>> 0a6e0df32ad1c975dce9b2ab80059291e822a483
         }
 
         
