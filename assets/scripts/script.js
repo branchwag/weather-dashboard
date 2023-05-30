@@ -85,7 +85,7 @@ function getWeatherDataByLatandLong(latitude, longitude) {
 
 
         //Now to fill in 5 day forecast
-        //console.log(data.list);
+        // console.log(data.list);
 
         //According to the weather api documentation, it pull entries every 3 hours which is 10800 added to the UNIX time (dt)
         //since 24 hrs divided by 3 is 8...so every 8th item is what we need actually
@@ -93,10 +93,14 @@ function getWeatherDataByLatandLong(latitude, longitude) {
 
         var numberOfDaysToForeCast = 5;
         var objectLocationCounter = 0; //used to grab data every 8th position
+
   
         //var startingDayNumber = 1;
         //made a div for each day
         for (var i = 0; i < (numberOfDaysToForeCast + 1); i++) {
+        if (+objectLocationCounter === 40) {
+          objectLocationCounter = 39;
+        }
 
         //GETTING DATA
         //Windspeed
@@ -112,8 +116,10 @@ function getWeatherDataByLatandLong(latitude, longitude) {
         document.getElementById("day" + i).appendChild(currentCityElement);
 
         //Gets Date
-        // console.log(data.list[0].dt_txt);
         var currentDateFromAPI = data.list[objectLocationCounter].dt_txt;
+        // if (+objectLocationCounter > 39) {
+        //   (currentCityFromAPI.slice(0, -10));
+        // }
         var currentDateElement = document.createElement("p");
         currentDateElement.innerText = "Date: " + currentDateFromAPI.slice(0, 11); //chops off utc timestamp at end to make this just the date
         document.getElementById("day" + i).appendChild(currentDateElement);
@@ -166,9 +172,9 @@ function getWeatherDataByLatandLong(latitude, longitude) {
         windSpeedElement.innerText = "Wind Speed: " + windSpeedFromAPI + " meters per second";
         document.getElementById("day" + i).appendChild(windSpeedElement);
 
-
-
-        objectLocationCounter = objectLocationCounter + 7; //had to change to 7 as 8 was getting out of bounds
+        objectLocationCounter = objectLocationCounter + 7; //needed to change to increment by 7 bc 8 would get out of bounds
+        // console.log(objectLocationCounter);
+        // console.log(i);
           
         }
 
